@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>¿Quieres ser mi San Valentín? 💖</title>
 
     <style>
@@ -165,7 +164,7 @@
         <strong>¿Quieres ser mi San Valentín? 💘</strong>
     </p>
 
-    <div class="buttons">
+    <div class="buttons" id="buttons">
         <button id="yes">Sí 💕</button>
         <button id="no">No 💔</button>
     </div>
@@ -182,8 +181,9 @@
 <script>
     const yesBtn = document.getElementById("yes");
     const noBtn = document.getElementById("no");
-    const message = document.getElementById("loveMessage");
+    const buttons = document.getElementById("buttons");
     const questionText = document.getElementById("questionText");
+    const message = document.getElementById("loveMessage");
     const music = document.getElementById("music");
 
     let scale = 1;
@@ -201,18 +201,22 @@
     });
 
     yesBtn.addEventListener("click", () => {
+        buttons.style.display = "none";
+        questionText.style.display = "none";
+
         message.style.display = "block";
+
         music.volume = 0.3;
         music.play().catch(() => {});
     });
 
-    /* Corazones animados */
+    /* Corazones */
     const heartsContainer = document.querySelector(".hearts");
 
     function createHeart() {
         const heart = document.createElement("div");
         heart.className = "heart";
-        heart.innerHTML = "💖";
+        heart.textContent = "💖";
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.fontSize = Math.random() * 22 + 14 + "px";
         heart.style.animationDuration = Math.random() * 3 + 4 + "s";
